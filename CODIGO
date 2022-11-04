@@ -1,0 +1,37 @@
+﻿DROP TABLE IF EXISTS weapons;
+
+
+CREATE TABLE weapons(
+    id_weapon INT,
+    weapon CHAR(24),
+    grip INT,
+    durability INT,
+    distance FLOAT,
+    quality INT,
+    physic_defense FLOAT,
+    physic_attack  FLOAT,
+    magic_defense FLOAT,
+    desciption TEXT,
+    `level` INT,
+    `level_min` INT,
+    id_weapon_type INT,
+    FOREIGN KEY (id_weapon_type) REFERENCES weapons_types (id_weapon_type)
+    
+);
+
+INSERT INTO weapons (weapon, grip, durability, distance, quality, physic_defense, physic_attack, magic_defense, description, `level`, `level_min`, id_weapon_type)
+VALUES("Brazo de bebe", 1, 900, 3, 100, 1, 1)
+
+
+CREATE TABLE weapons_materials {
+id_weapon_material INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+id_weapon INT UNSIGNED,
+id_material INT UNSIGNED,
+FOREIGN KEY (id_weapon) REFERENCES armours(id_weapon ),
+FOREIGN KEY (id_material) REFERENCES armours(id_material)
+
+};
+
+
+DROP TABLE IF EXISTS weapons_materials;
+	
